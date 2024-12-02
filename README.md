@@ -1,9 +1,9 @@
 Sentiment Analysis Using Bag of Words
 Overview
-This project implements a basic sentiment analysis system using the Bag of Words (BoW) model and Logistic Regression. The objective is to classify textual data into two sentiment categories: Positive and Negative.
+This project implements a Sentiment Analysis system that classifies textual data into two sentiment categories: Positive and Negative. The analysis is done using the Bag of Words (BoW) model in combination with Logistic Regression to predict sentiment from user input.
 
 Dataset
-The dataset contains 12 labeled sentences, categorized as either Positive or Negative sentiments:
+The dataset consists of 12 labeled sentences, categorized into two sentiment classes: Positive and Negative.
 
 Text	Label
 I love data science.	Positive
@@ -19,61 +19,62 @@ The tutorial was very boring.	Negative
 I love working with natural language processing.	Positive
 NLP projects are really interesting to me.	Positive
 Project Workflow
-1. Text Preprocessing
+Text Preprocessing:
+
 Convert text to lowercase.
 Remove punctuation and stopwords.
 Tokenize text into individual words.
-2. Feature Extraction
+Feature Extraction:
+
 Apply the Bag of Words (BoW) model using CountVectorizer.
 Create a feature matrix where each column represents a word, and each row represents its occurrence in a sentence.
-3. Data Splitting
+Data Splitting:
+
 Split the dataset into training (70%) and testing (30%) subsets.
-4. Model Training
+Model Training:
+
 Train a Logistic Regression model on the BoW feature matrix.
-5. Evaluation
+Evaluation:
+
 Use a confusion matrix to evaluate the model's performance.
-6. Prediction
+Prediction:
+
 Implement a user interface for predicting the sentiment of custom sentences.
 Visualization
-1. Correlation Heatmap
-Visualize feature correlation in the Bag of Words matrix using a heatmap.
-2. Confusion Matrix
-Display the confusion matrix to understand model predictions.
+Correlation Heatmap: Visualize feature correlation in the Bag of Words matrix using a heatmap.
+Confusion Matrix: Display the confusion matrix to understand the model's predictions.
 How to Run the Project
 Install the required libraries:
+
 bash
 Copy code
 pip install scikit-learn seaborn matplotlib nltk
-Run the Python script.
-Enter a sentence when prompted to test the sentiment prediction.
+Run the Python script and follow the prompt to test sentiment prediction by entering a sentence.
+
 Code Explanation
 Key Components
 Text Preprocessing Function
-
 python
 Copy code
 def preprocess_text(text):
-    text = text.lower()
-    text = text.translate(str.maketrans("", "", string.punctuation))
-    words = text.split()
-    words = [word for word in words if word not in stop_words]
+    text = text.lower()  # Convert to lowercase
+    text = text.translate(str.maketrans("", "", string.punctuation))  # Remove punctuation
+    words = text.split()  # Tokenize the sentence
+    words = [word for word in words if word not in stop_words]  # Remove stopwords
     return " ".join(words)
 Bag of Words Model
-
 python
 Copy code
 from sklearn.feature_extraction.text import CountVectorizer
 vectorizer = CountVectorizer()
 X = vectorizer.fit_transform(df['Processed_Text'])
 Model Training and Prediction
-
 python
 Copy code
 from sklearn.linear_model import LogisticRegression
 model = LogisticRegression()
 model.fit(X_train, y_train)
 User Interface for Prediction
-
 python
 Copy code
 user_comment = input("Enter a sentence to predict sentiment (Positive/Negative): ")
@@ -87,4 +88,4 @@ Integrate more advanced feature extraction methods like TF-IDF or Word Embedding
 License
 This project is open-source and available under the MIT License.
 
-Feel free to modify and enhance! 🎉
+Feel free to modify, enhance, and share your improvements!
